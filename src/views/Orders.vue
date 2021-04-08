@@ -1,14 +1,14 @@
 <template>
     <div>
         <v-row>
-            <v-col lg="2" md="3" sm="12" xs="12">
+            <v-col lg="3" md="3" sm="12" xs="12">
                 <orders-panel :nuevoProducto="nuevoProducto" @seleccionar-orden="enviarOrden"></orders-panel>
             </v-col>
 
             <v-col lg="5" md="6" sm="12" xs="12">
                 <productos-panel :ordenActualizada="ordenSeleccionada"></productos-panel>
             </v-col>
-            <v-col lg="5" md="6" sm="12" xs="12">
+            <v-col lg="4" md="3" sm="12" xs="12">
                 <pago-panel @agregar-producto="agregarProducto" ></pago-panel>
             </v-col>
         </v-row>

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <article class="OrdersContainer">
+        <article class="OrdersContainer" lg="12">
             <!-- <h3>ORDENES DE COMPRA</h3> -->
             <v-row>
                 <v-col lg="10" class="buscadorOrden">
@@ -15,7 +15,7 @@
                 </v-col>
             </v-row>
 
-            <v-row v-if="ordenBuscada === ''" :style="{maxHeight: '78vh',overflowY:'auto'}">
+            <v-row v-if="ordenBuscada === ''" :style="{height: '78vh',maxHeight: '78vh',overflowY:'auto'}">
                 <v-col lg=12>
                     <v-tabs :active-class="'activeTab'" class="tabs"
                     :vertical="true"
@@ -36,7 +36,7 @@
                          <v-tab v-if="ordenEncontrada.numero === 'NF'">
                             Número de orden no existente
                         </v-tab>
-                        <v-tab v-else>
+                        <v-tab @click="seleccionarOrden(ordenEncontrada)" v-else>
                             Número de orden: {{ordenEncontrada.numero}}
                         </v-tab>
                     </v-tabs>
@@ -56,18 +56,6 @@ export default {
                 {numero:'5555',productos:[{sku:'5466',name:'Nintendo Switch',quantity:1,price:7999.00},{sku:'5466',name:'Xbox one s',quantity:1,price:5999.00},{sku:'5466',name:'Playstation 5',quantity:1,price:7999.00},{sku:'5466',name:'Nintendo Wii ',quantity:1,price:5999.00},{sku:'5466',name:'Xbox 360',quantity:1,price:7999.00},{sku:'5466',name:'Xbox one',quantity:1,price:5999.00},{sku:'5466',name:'Nintendo 64',quantity:1,price:7999.00},{sku:'5466',name:'Nintendo DS',quantity:1,price:5999.00}]},
                 {numero:'4586',productos:[{sku:'7899',name:'Autolavado Hot Wheels',quantity:1,price:578.00},{sku:'5466',name:'Mustang Hot Wheels',quantity:1,price:47.00}]},
                 {numero:'9813',productos:[{sku:'3562',name:'iPad Mini',quantity:2,price:5499.00}]},
-                {numero:'1688',productos:[{sku:'4856',name:'Beats by Dre',quantity:4,price:2400.00}]},
-                {numero:'1688',productos:[{sku:'4856',name:'Beats by Dre',quantity:4,price:2400.00}]},
-                {numero:'1688',productos:[{sku:'4856',name:'Beats by Dre',quantity:4,price:2400.00}]},
-                {numero:'1688',productos:[{sku:'4856',name:'Beats by Dre',quantity:4,price:2400.00}]},
-                {numero:'1688',productos:[{sku:'4856',name:'Beats by Dre',quantity:4,price:2400.00}]},
-                {numero:'1688',productos:[{sku:'4856',name:'Beats by Dre',quantity:4,price:2400.00}]},
-                {numero:'9813',productos:[{sku:'3562',name:'iPad Mini',quantity:2,price:5499.00}]},
-                {numero:'1688',productos:[{sku:'4856',name:'Beats by Dre',quantity:4,price:2400.00}]},
-                {numero:'1688',productos:[{sku:'4856',name:'Beats by Dre',quantity:4,price:2400.00}]},
-                {numero:'1688',productos:[{sku:'4856',name:'Beats by Dre',quantity:4,price:2400.00}]},
-                {numero:'1688',productos:[{sku:'4856',name:'Beats by Dre',quantity:4,price:2400.00}]},
-                {numero:'1688',productos:[{sku:'4856',name:'Beats by Dre',quantity:4,price:2400.00}]},
                 {numero:'1688',productos:[{sku:'4856',name:'Beats by Dre',quantity:4,price:2400.00}]},
             ],
             ordenBuscada:'',

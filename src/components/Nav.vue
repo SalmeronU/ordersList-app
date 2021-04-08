@@ -7,7 +7,11 @@
       </v-img>
 
 
-    <v-tabs color="yellow" align>
+    <v-tabs
+    hide-slider
+     v-model="activeDefaultTab"
+     color="yellow"
+     >
         <v-spacer></v-spacer>
         <v-tab v-for="tab in tabs" :key="tab" class="Hola" @click="activeTab(tab)">{{tab}}</v-tab>
         <v-tab @click="mostrarRegistro">Registro</v-tab>
@@ -21,14 +25,15 @@ export default {
         return{
             tabs: [
                 'Ingresar',
-                'Ordenes'
+                'Ordenes',
             ],
+            activeDefaultTab: null
         };
     },
     methods:{
         activeTab(tab){
             this.$emit('mostrar-registro',false);
-            this.$router.push('/'+tab);
+            this.$router.push('/'+tab).catch(()=>{});
         },
         mostrarRegistro(){
             this.$route.path === '/Ordenes' ? this.revisarRuta()  : this.$emit('mostrar-registro',true);    
@@ -37,6 +42,9 @@ export default {
             this.$emit('mostrar-registro',true);
             this.$router.push('/Ingresar');
         }
+    },
+    mounted(){
+        this.activeDefaultTab = 0;
     }
 }
 </script>
