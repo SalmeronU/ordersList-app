@@ -53,10 +53,6 @@ export default {
     data(){
         return{
             Ordenes:[
-                {numero:'5555',productos:[{sku:'5466',name:'Nintendo Switch',quantity:1,price:7999.00},{sku:'5466',name:'Xbox one s',quantity:1,price:5999.00},{sku:'5466',name:'Playstation 5',quantity:1,price:7999.00},{sku:'5466',name:'Nintendo Wii ',quantity:1,price:5999.00},{sku:'5466',name:'Xbox 360',quantity:1,price:7999.00},{sku:'5466',name:'Xbox one',quantity:1,price:5999.00},{sku:'5466',name:'Nintendo 64',quantity:1,price:7999.00},{sku:'5466',name:'Nintendo DS',quantity:1,price:5999.00}]},
-                {numero:'4586',productos:[{sku:'7899',name:'Autolavado Hot Wheels',quantity:1,price:578.00},{sku:'5466',name:'Mustang Hot Wheels',quantity:1,price:47.00}]},
-                {numero:'9813',productos:[{sku:'3562',name:'iPad Mini',quantity:2,price:5499.00}]},
-                {numero:'1688',productos:[{sku:'4856',name:'Beats by Dre',quantity:4,price:2400.00}]},
             ],
             ordenBuscada:'',
             ordenEncontrada:'',
@@ -76,10 +72,21 @@ export default {
                 Authorization: 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwUGFINU55VXRxTUkzMDZtajdZVHdHV3JIZE81cWxmaCIsImlhdCI6MTYwNTY0NDA0NzA1OH0.skfIY_7CAANkxmhoq37OI4jYRE8flx1ENq1v1VaRevJiroYNFQYz7Oy6hL1YZ1OJkevXSQFuLMHTqY0w6d5nPQ'
             }
         }).then(response =>{
-            console.log(response);
+            response.data.orders.forEach(element => {
+                var productosBD = [];
+                element.items.forEach(producto =>{
+                    productosBD.push(producto);
+                });
+                const nuevaOrden = {
+                    numero:element.number,
+                    productos:productosBD
+                };
+
+                this.Ordenes.push(nuevaOrden);
+            });
+            this.ordenEncontrada = this.Ordenes[0];
+            this.$emit('seleccionar-orden', this.ordenEncontrada);
         });
-        this.ordenEncontrada = this.Ordenes[0];
-        this.$emit('seleccionar-orden', this.ordenEncontrada);
     },
     watch:{
         ordenBuscada(actual){

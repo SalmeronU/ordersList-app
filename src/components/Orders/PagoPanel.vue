@@ -47,7 +47,7 @@
                 v-model="quantity"
                 type="number"
                 label="Cantidad"
-                :rules="campoVacio"
+                :rules="mayorZero"
                 :outlined="true"
                 >
     
@@ -92,6 +92,9 @@ export default {
             campoVacio: [
                 v => v.length>0 || 'Campo faltante',
             ],
+            mayorZero: [
+                v => v>0 || 'Al menos una pieza',
+            ],
             price:'',
             sku:'',
             quantity:''
@@ -101,7 +104,11 @@ export default {
         agregarProducto(){
             if(this.$refs.agregarProductoForm.validate()){
                 this.$emit('agregar-producto',this.name,this.price,this.sku,this.quantity);
-                this.$refs.agregarProductoForm.reset();
+                this.name='';
+                this.price='';
+                this.sku='';
+                this.quantity=''; 
+                this.$refs.agregarProductoForm.resetValidation()
             }
         },
     }

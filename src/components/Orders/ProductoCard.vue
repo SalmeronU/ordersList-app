@@ -24,7 +24,7 @@
                     <div class="containerContent">
                         <v-row >
                         <v-col lg="3">
-                            <img src="https://http2.mlstatic.com/D_NQ_NP_817201-MLA40692089527_022020-V.webp" alt="">
+                            <img src="https://http2.mlstatic.com/D_Q_NP_2X_650220-MLM43775063315_102020-AB.webp" alt="">
                         </v-col>
                         <v-col lg="3">
                             <p><a href="#">{{producto.name}}</a>
